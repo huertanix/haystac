@@ -7,13 +7,17 @@
 // @license        AGPL
 // @include        http://*.haystackproject.org/alpha/search.htm*
 // @include        http://*.haystackproject.com/alpha/search.htm*
+// @require        scrapers/ghtScrape.js
+// @require        randomCore.js
 // ==/UserScript==
 
-// set up an event listener so that the GS function can be accessed
-var btnSearch = document.getElementById('btnSearch');
-btnSearch.addEventListener('click', webSearch(true), false);
+// Diable no-userscript warning, because its obviously installed already.
+document.getElementById('failOverlay').style.visibility='hidden';
+// This has to be accessed all over, so here it is
+var userTerm ='';
 
-function window.webSearch(isUserTerm)
+//window.webSearch = function(withUserTerm) // this makes it run the function on page load, boo.
+function webSearch(withUserTerm)
 {
 	var searchTerm = document.getElementById('txtSearchBox').value;
 	var randomWordOrder = document.getElementById('chkReorderPhrase').checked;
@@ -86,9 +90,7 @@ function window.webSearch(isUserTerm)
 	displaySearchBurst(terms);
 	
 	for (var x=0; x<terms.length; x++)
-	{
-		//alert('term being scoured: ' + terms[x]);
-		
+	{	
 		if (terms[x] == userTerm)
 		{
 			gSearch(terms[x], true);
@@ -104,6 +106,22 @@ function window.webSearch(isUserTerm)
 	document.getElementById('txtSearchBox').focus();
 	
 	setTimeout('webSearch(false);', randomNumberBetwixt(30000, 300000));
+}
+
+// set up an event listener so that the GS function can be accessed
+var btnSearch = document.getElementById('btnSearch');
+var txtSearch = document.getElementById('txtSearchBox');
+btnSearch.addEventListener('click', function(){ webSearch(true); }, false);
+txtSearch.addEventListener('onkeydown', keyPressWebSearch, true);
+
+function keyPressWebSearch(ev)
+{
+	alert(ev.keyCode);
+	
+	if (ev.keyCode == 13) 
+	{
+		webSearch(true);
+	}
 }
 
 function gSearch(searchTerm, isUserTerm)
@@ -135,10 +153,13 @@ function gSearch(searchTerm, isUserTerm)
     		method: 'GET',
     		url: gSearchUrl + gSearchPhrase,
     		headers: {
-       	 		'User-agent': navigator.userAgent, //e.g. 'Mozilla/4.0 (compatible) Greasemonkey',
-        		//'Accept': 'application/atom+xml,application/xml,text/xml',
+       	 		'User-agent': navigator.userAgent //e.g. 'Mozilla/4.0 (compatible) Greasemonkey',
+        		//,'Accept': 'application/atom+xml,application/xml,text/xml',
     		},
-    		onload: gClicks;
+    		onload: function(responseDetails) 
+    		{
+    			return gClicks(responseDetails);
+    		}
 		});
 	}
 }
@@ -158,7 +179,7 @@ function gClicks(searchPageResponse)
     		method: 'GET',
     		url: clickThroughUrls[x],
     		headers: {
-       	 		'User-agent': navigator.userAgent,
+       	 		'User-agent': navigator.userAgent
     		},
     		onload: function(responseDetails) 
     		{
@@ -242,4 +263,27 @@ function gUrl(realUrl,oi,cad,ct,cd,usg,sig2,ved,ei)
 		,usg?'&usg='+usg:'',sig2].join('');
 		
 	return obeseSisterUrl;
+}
+
+function displaySearchBurst(terms)
+{
+	var htmlTerms = '<ol>';
+	
+	for (var x=0; x < terms.length; x++)
+	{ 
+		if (terms[x] == userTerm)
+		{
+			htmlTerms += '<li class=\'hoomanSearchTerm\'>';
+		}
+		else
+		{
+			htmlTerms += '<li class=\'cylonSearchTerm\'>';
+		}
+		
+		htmlTerms += terms[x] + '</li>';
+	}
+	
+	htmlTerms += '</ol>';
+	
+	document.getElementById('pnlTerms').innerHTML = htmlTerms;
 }

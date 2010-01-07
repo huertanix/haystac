@@ -14,38 +14,6 @@
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 	<HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 	<link rel="StyleSheet" href="main.css" title="Main" type="text/css" />
-	<script type="text/javascript" src="randomCore.js"></script>
-	<script type="text/javascript" src="scrapers/ghtScrape.js"></script>
-	<script type="text/javascript">
-		<!--
-		var userTerm;
-	
-		function displaySearchBurst(terms)
-		{
-			var htmlTerms = '<ol>';
-			
-			for (var x=0; x < terms.length; x++)
-			{ 
-				//if (terms[x] == document.getElementById('txtSearchBox').value.toLowerCase())
-				if (terms[x] == userTerm)
-				{
-					htmlTerms += '<li class=\'hoomanSearchTerm\'>';
-				}
-				else
-				{
-					htmlTerms += '<li class=\'cylonSearchTerm\'>';
-				}
-				
-				htmlTerms += terms[x] + '</li>';
-			}
-			
-			htmlTerms += '</ol>';
-			
-			document.getElementById('pnlTerms').innerHTML = htmlTerms;
-		}
-		// -->
-	</script>
-	
 </head>
 <body>
 
@@ -71,7 +39,7 @@
 			<div class="searchNote">
 				*** NOTE: Please whitelist haystackproject.org and haystackproject.com in your pop-up blocking software or else everything will be thrown out of whack and the CIA will storm your house, kick your dog, and melt your otter pops. ***
 			</div>
-			<input type="text" id="txtSearchBox" class="searchBox" onkeydown="JavaScript: if (event.keyCode == 13) { document.webSearch(true); }" />
+			<input type="text" id="txtSearchBox" class="searchBox" />
 		</div>
 		<div class="searchControls">
 			<input type="checkbox" id="chkReorderPhrase" class="searchOption" />Randomize Word Order in Search Phrase
@@ -98,5 +66,25 @@
 	
 	// -->
 </script>
+
+<div id="failOverlay">
+	<div id="failNotification">
+		<div id="failNotificationHeader">Userscript Not Installed</div>
+		<div id="failMessage">
+			This site does crazy backflip ninja acrobatics and needs you to install <a href="hayproj.user.js">this Userscript</a> for it to work.
+		</div>
+		<div id="failMessageFooter">
+			Does your browser support GreaseMonkey/Userscripts?
+			<br />
+			<a href="http://userscripts.org/about/installing" target="_blank">Firefox</a> | 
+			<a href="http://lifehacker.com/5180010/enable-user-scripts-in-google-chrome" target="_blank">Chrome</a> | 
+			<a href="http://www.opera.com/browser/tutorials/userjs/using/" target="_blank">Opera</a> | 
+			<a href="http://ubuntuforums.org/showthread.php?t=807229" target="_blank"><s>Epiphany</s></a> | 
+			<a href="http://www.youtube.com/watch?v=rSSw3-6o0Qw" target="_blank">Flock</a> | 
+			<a href="http://browser-extras.garage.maemo.org/news/3/" target="_blank">Maemo</a>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>
