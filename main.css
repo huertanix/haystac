@@ -54,7 +54,7 @@ body
 	text-decoration:none;
 }
 
-.wordStack a:hover, .contentText a:active
+.wordStack a:hover, .wordStack a:active
 {
 	color:#FFF;
 	text-decoration:none;
@@ -229,6 +229,21 @@ body
 	text-align:left;
 }
 
+.searchDisclaimer a:link
+{
+	color:#FFF;
+}
+
+.searchDisclaimer a:visited
+{
+	color:#FFF;
+}
+
+.searchDisclaimer a:hover, .searchDisclaimer a:active
+{
+	color:#FFF;
+}
+
 .searchTip
 {
 	width:450px;
@@ -373,16 +388,85 @@ You know BSG and lolcats have corrupted your mind when you're using ".cylonSearc
 	text-transform: uppercase;
 }
 
-.cylonSearchFrame
-{
-	width:1px;
-	height:1px;
-	display:none;
-}
-
 .resultFrame
 {
 	display:none;
+	/*display:block;*/
 	width:300px;
 	height:100px;
+}
+
+#failOverlay
+{
+	background-image:url('fail_overlay_bg.png');
+	height:100%;
+	width:100%;
+	z-index:9000;
+	text-align:center;
+	vertical-align: middle;
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-family:Arial,Helvetica,Sans;
+}
+
+#failNotification
+{
+	background-color:#333;
+	display:block;
+	width:360px;
+	height:auto;
+	z-index:9001;
+	text-align:center;
+	margin:6em auto;
+	color:#CCC;
+	padding:20px;
+}
+
+#failMessage
+{
+	text-align:left;
+	display:block;
+	font-size:16px;
+	width:360px;
+	height:auto;
+	margin-bottom:15px;
+}
+
+#failNotificationHeader
+{
+	color:#FFF;
+	text-align:center;
+	letter-spacing:3px;
+	display:block;
+	width:360px;
+	height:auto;
+	font-size:30px;
+	font-weight:bold;
+	text-transform:uppercase;
+	margin-bottom:10px;
+}
+
+#failMessageFooter
+{
+	text-align:center;
+	display:block;
+	font-size:12px;
+	width:360px;
+	height:auto;
+}
+
+#failNotification a:link
+{
+	color:#FFF;
+}
+
+#failNotification a:visited
+{
+	color:#FFF;
+}
+
+#failNotification a:hover, #failNotification a:active
+{
+	color:#FFF;
 }
