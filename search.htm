@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!--
 	haystack project
@@ -11,7 +11,7 @@
 -->
 <head>
 	<title>Haystack Project - Web Search</title>
-	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	<meta charset="utf-8">
 	<HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 	<link rel="StyleSheet" href="main.css" title="Main" type="text/css" />
 </head>
@@ -25,9 +25,11 @@
 			</a>
 			<div class="contentNavigation">
 				<a href="http://www.haystackproject.org/about.htm">about</a>
+				<a href="http://hayproj.tumblr.com/" target="_new">blog</a>
 				<a href="http://www.haystackproject.org/downloads.htm">download</a>
 				<a href="http://www.haystackproject.org/developers.htm">developers</a>
 				<a href="http://www.haystackproject.org/support.htm">support</a>
+				<a href="http://www.haystackproject.org/press.htm">press</a>
 				<a href="http://www.haystackproject.org/contact.htm">contact</a>
 				<a href="http://www.haystackproject.org/search.htm">web search</a>
 			</div>
@@ -39,6 +41,9 @@
 			<div class="searchNote">
 				*** NOTE: Please whitelist haystackproject.org and haystackproject.com in your pop-up blocking software or else everything will be thrown out of whack and the CIA will storm your house, kick your dog, and melt your otter pops. ***
 			</div>
+			<div class="updateNotification">
+				A new version of the Haystack Project Search Obfuscator userscript is available.  Please <a href="hayproj.user.js">update</a>.
+			</div>
 			<input type="text" id="txtSearchBox" class="searchBox" />
 		</div>
 		<div class="searchControls">
@@ -46,26 +51,55 @@
 			&nbsp;
 			<input type="checkbox" id="chkIncludeTypos" class="searchOption" disabled="disabled" />Include Typos
 		</div>
+		
 		<div class="searchButtonContainer">
 			<input type="button" id="btnSearch" value="search" class="searchButton" />
 		</div>
 		
+		<div class="searchEngineContainer">
+			<select id="ddlSearchEngine">
+				<option value="yb">Yauba</option>
+				<option value="g">Google</option>
+				<option value="yh">Yahoo</option>
+				<option value="c">Cuil</option>
+				<option value="a">Ask</option>
+			</select>
+		</div>
+		
 		<div id="pnlTermsContainer" class="searchTermsContainer">
-			<div class="searchTip">
+			<!-- This will auto-randomly generate artificial stacks in the near future... -->
+			<div class="searchTip" style="display:none;">
 				For best results, keep this page open to allow it to generate its own searches.
 			</div>
 			<div id="pnlTerms"></div>
 			<div class="searchDisclaimer">
-				<b>DISCLAIMER</b>: This service utilizes some server-side code to retrieve content to generate keywords with.  As per AGPL requirements, the source code for this is available in the <a href="http://github.com/huertanix/Haystack-Project---Web-Search/tree/master">GIT repository</a>.  However, it is ran on our (shared) server and thus <del>you have no real way of knowing if it's been backdoor'd</del> we have provided some <a href="http://www.haystackproject.org/auditinstructions.htm">instructions</a> on how to audit the code to make sure its doing what you think it is.  We can't guarantee your privacy, not that we ever did; We don't have the lawyers for that.
+				<b>DISCLAIMER</b>: As per AGPL requirements, the source code for the Haystack Project Search Obfuscator is available in our <a href="http://github.com/huertanix/Haystack-Project---Web-Search/tree/master">GIT repository</a>.  However, we can't guarantee your privacy in any way; We don't have the lawyers for that plus is impossible.
 			</div>
 		</div>
 	</div>
 </div>
+<br />
+<br />
+<div id="pnlDebug" style="visibility:hidden; float:left;">
+	<!-- This panel will eventually be used to output debug info -->
+</div>
 <script type="text/javascript">
 	<!--
-	
+		var currentHayProjVersion = '0.1.0';
 	// -->
 </script>
+
+<div id="notificationOverlay" class="notifyOverlay">
+	<div id="notificationBody" class="notifyBody">
+		<div id="notificationHeader" class="notifyHeader">Generating Search Terms</div>
+		<div id="notificationMessage" class="notifyMessage">
+			It'll just be a sec...
+		</div>
+		<div id="notificationFooter" class="notifyFooter">
+			If this doesn't disappear in a few seconds, your internet might suck!
+		</div>
+	</div>
+</div>
 
 <div id="failOverlay">
 	<div id="failNotification">
@@ -74,14 +108,14 @@
 			This site does crazy backflip ninja acrobatics and needs you to install <a href="hayproj.user.js">this Userscript</a> for it to work.  <a href="javascript:location.reload(true)">Refresh</a> this page after the install.
 		</div>
 		<div id="failMessageFooter">
-			Does your browser support GreaseMonkey/Userscripts?
+			Does your browser support GreaseMonkey userscripts?
 			<br />
 			<a href="http://userscripts.org/about/installing" target="_blank">Firefox</a> | 
 			<a href="http://lifehacker.com/5180010/enable-user-scripts-in-google-chrome" target="_blank">Chrome</a> | 
 			<a href="http://www.opera.com/browser/tutorials/userjs/using/" target="_blank">Opera</a> | 
 			<a href="http://ubuntuforums.org/showthread.php?t=807229" target="_blank"><s>Epiphany</s></a> | 
 			<a href="http://www.youtube.com/watch?v=rSSw3-6o0Qw" target="_blank">Flock</a> | 
-			<a href="http://browser-extras.garage.maemo.org/news/3/" target="_blank">Maemo</a>
+			<a href="http://browser-extras.garage.maemo.org/news/3/" target="_blank">Maemo Web Browser</a>
 		</div>
 	</div>
 </div>
