@@ -227,7 +227,7 @@ body
 	margin-bottom:10px;
 }
 
-.updateNotification
+#updateNotification
 {
 	width:425px;
 	background-color:#FF0;

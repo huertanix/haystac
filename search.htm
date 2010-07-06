@@ -41,7 +41,7 @@
 			<div class="searchNote">
 				*** NOTE: Please whitelist haystackproject.org and haystackproject.com in your pop-up blocking software or else everything will be thrown out of whack and the CIA will storm your house, kick your dog, and melt your otter pops. ***
 			</div>
-			<div class="updateNotification">
+			<div id="updateNotification">
 				A new version of the Haystack Project Search Obfuscator userscript is available.  Please <a href="hayproj.user.js">update</a>.
 			</div>
 			<input type="text" id="txtSearchBox" class="searchBox" />
@@ -63,6 +63,7 @@
 				<option value="yh">Yahoo</option>
 				<option value="c">Cuil</option>
 				<option value="a">Ask</option>
+				<option value="dg">DuckDuckGo</option>
 			</select>
 		</div>
 		
@@ -85,7 +86,7 @@
 </div>
 <script type="text/javascript">
 	<!--
-		var currentHayProjVersion = '0.1.0';
+		var currentHayProjVersion = '0.1.1';
 	// -->
 </script>
 
@@ -96,7 +97,7 @@
 			It'll just be a sec...
 		</div>
 		<div id="notificationFooter" class="notifyFooter">
-			If this doesn't disappear in a few seconds, your internet might suck!
+			If this doesn't disappear in a few seconds, please <a href="javascript:location.reload(true)">reload</a> and try again.
 		</div>
 	</div>
 </div>
@@ -105,10 +106,10 @@
 	<div id="failNotification">
 		<div id="failNotificationHeader">Userscript Not Installed</div>
 		<div id="failMessage">
-			This site does crazy backflip ninja acrobatics and needs you to install <a href="hayproj.user.js">this Userscript</a> for it to work.  <a href="javascript:location.reload(true)">Refresh</a> this page after the install.
+			This site does crazy backflip ninja acrobatics and needs you to <a href="hayproj.user.js">install this userscript</a> for it to work.  <a href="javascript:location.reload(true)">Refresh</a> this page after the install.
 		</div>
 		<div id="failMessageFooter">
-			Does your browser support GreaseMonkey userscripts?
+			Does your browser support Greasemonkey userscripts?
 			<br />
 			<a href="http://userscripts.org/about/installing" target="_blank">Firefox</a> | 
 			<!--<a href="http://lifehacker.com/5180010/enable-user-scripts-in-google-chrome" target="_blank">Chrome</a> | -->
