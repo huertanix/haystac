@@ -229,17 +229,22 @@ body
 
 #updateNotification
 {
-	width:425px;
+	width:430px;
+	background-color:#333;
+	margin-bottom:10px;
+	padding: 5px 5px 5px 5px;
+	text-align:center;
+	line-height:25px;
+	display:none;
+}
+
+#updateNotificationText
+{
 	background-color:#FF0;
 	color:#333;
 	font-family: Arial, Helvetica, Sans;
 	font-size:16px;
-	text-align:left;
 	font-weight:bold;
-	margin-bottom:10px;
-	padding: 10px 10px 10px 10px;
-	text-align:center;
-	display:none;
 }
 
 .searchDisclaimer
@@ -571,17 +576,17 @@ You know BSG and lolcats have corrupted your mind when you're using ".cylonSearc
 	color:#FFF;
 }
 
-.updateNotification a:link
+#updateNotification a:link
 {
 	color:#000;
 }
 
-.updateNotification a:visited
+#updateNotification a:visited
 {
 	color:#000;
 }
 
-.updateNotification a:hover, .updateNotification a:active
+#updateNotification a:hover, #updateNotification a:active
 {
 	color:#000;
 }
