@@ -16,6 +16,25 @@
 	<link rel="StyleSheet" href="main.css" title="Main" type="text/css" />
 	<script type="text/javascript">
 		window.currentHayProjVersion = '0.1.2';
+		
+		//function popUpsBlocked()
+		//{
+			var testWindow = window.open('','','width=1,height=1,left=0,top=0,scrollbars=no');
+			var popUpsBlocked = true;
+			
+			if (testWindow)
+			{
+				popUpsBlocked = false;
+				testWindow.close();
+			}
+			else
+			{
+				popUpsBlocked = true;
+			}
+
+			//return blocked;
+		//}
+		
 	</script>
 </head>
 <body>
@@ -23,8 +42,8 @@
 <div class="pageMantle">
 	<div class="pageCore">
 		<div class="navigationLeftCol">
-			<a href="http://www.haystackproject.org/index.htm">
-				<img src="http://www.haystackproject.org/logo_small.png" alt="Home" />
+			<a href="../index.htm">
+				<img src="../logo_small.png" alt="Home" />
 			</a>
 			<div class="contentNavigation">
 				<a href="../about.htm">about</a>
@@ -45,12 +64,27 @@
 			<h1 class="contentHeader">
 				Web Search (Alpha)
 			</h1>
-			<div class="searchNote">
-				*** NOTE: Please whitelist hayst.ac, haystackproject.org, and haystackproject.com in your pop-up blocking software or else everything might be thrown out of whack and the CIA will storm your house, kick your dog, and melt your otter pops. ***
+			<div class="searchNote" id="searchNote">
+				JavaScript is disabled, please enable it for your search to work properly.	
 			</div>
+			<script type="text/javascript">
+				var searchNoteText;
+				
+				if (popUpsBlocked)
+				{
+					searchNoteText = 'WARNING: Please whitelist hayst.ac, haystackproject.org, and haystackproject.com in your pop-up blocking software or else everything might be thrown out of whack and the CIA will storm your house, kick your dog, and melt your otter pops.';
+				}
+				else
+				{
+					searchNoteText = 'Enter your search query and choose your preferred search engine.';
+				}
+				
+				document.getElementById('searchNote').innerHTML = searchNoteText;
+			</script>
+			
 			<div id="updateNotification">
 				<span id="updateNotificationText">
-					A new version of the Hayst.ac Search Obfuscator userscript is available.  Please <a href="hayproj.user.js">update</a>.
+					A new version of the Hayst.ac search obfuscation userscript is available.  Please <a href="hayproj.user.js">update</a>.
 				</span>
 			</div>
 			<input type="text" id="txtSearchBox" class="searchBox" />
