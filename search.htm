@@ -14,8 +14,9 @@
 	<meta charset="utf-8">
 	<HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 	<link rel="StyleSheet" href="main.css" title="Main" type="text/css" />
+	<script type="text/javascript" src="htmlIncludes.js"></script>
 	<script type="text/javascript">
-		window.currentHayProjVersion = '0.1.4';
+		//window.currentHayProjVersion = '0.1.5';
 		
 		var testWindow = window.open('','','width=1,height=1,left=0,top=0,scrollbars=no');
 		var popUpsBlocked = true;
@@ -32,28 +33,16 @@
 	</script>
 </head>
 <body>
-
+<div id="feedbackTab"></div>
+<script type="text/javascript">
+	includeFeedbackTab();
+</script>
 <div class="pageMantle">
 	<div class="pageCore">
-		<div class="navigationLeftCol">
-			<a href="../index.htm">
-				<img src="../logo_small.png" alt="Home" />
-			</a>
-			<div class="contentNavigation">
-				<a href="../about.htm">about</a>
-				<a href="http://hayproj.tumblr.com/" target="_new">blog</a>
-				<a href="../developers.htm">developers</a>
-				<a href="../support.htm">support</a>
-				<a href="../press.htm">press</a>
-				<a href="../contact.htm">contact</a>
-				<a href="search.htm">web search</a>
-			</div>
-			<div>
-				<a href="http://twitter.com/hayproj"><img src="../twitter.png" class="socialMediaIcon" /></a>
-				<a href="http://www.facebook.com/pages/Haystack-Project/238404456195"><img src="../facebook.png" class="socialMediaIcon" /></a>
-				<a href="http://hayproj.tumblr.com"><img src="../tumblr.png" class="socialMediaIcon" /></a>
-			</div>
-		</div>
+		<div id="navigationLeftCol"></div>
+		<script type="text/javascript">
+			includeNavigation();
+		</script>
 		<div class="searchBoxContainer">
 			<h1 class="contentHeader">
 				Web Search (Alpha)
@@ -137,12 +126,12 @@
 
 <div id="failOverlay">
 	<div id="failNotification">
-		<div id="failNotificationHeader">Userscript Not Installed</div>
+		<div id="failNotificationHeader">User Script Not Installed</div>
 		<div id="failMessage">
-			This site does crazy backflip ninja acrobatics and needs you to <a href="hayproj.user.js">install this userscript</a> for it to work.  <a href="javascript:location.reload(true)">Refresh</a> this page after the install.
+			In order to obfuscate your web search history, you will need to <a href="hayproj.user.js">install this userscript</a>.  You may also preview the script source before installing. <a href="javascript:location.reload(true)">Refresh</a> this page after the install.
 		</div>
 		<div id="failMessageFooter">
-			Does your browser support Greasemonkey userscripts?
+			Does your browser support Greasemonkey user scripts?
 			<br />
 			<a href="http://userscripts.org/about/installing" target="_blank">Firefox</a> | 
 			<!--<a href="http://lifehacker.com/5180010/enable-user-scripts-in-google-chrome" target="_blank">Chrome</a> | -->
@@ -155,6 +144,6 @@
 		</div>
 	</div>
 </div>
-<input type="hidden" id="hdnCurrentVersion" value="0.1.4" /> 
+<input type="hidden" id="hdnCurrentVersion" value="0.1.5" /> 
 </body>
 </html>

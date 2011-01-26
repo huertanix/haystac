@@ -1,6 +1,7 @@
 body
 {
 	background-color: #000;
+	font-family: Helvetica, Arial, Sans;
 }
 
 .pageMantle
@@ -31,7 +32,6 @@ body
 	text-align: justify;
 	font-size: 11px;
 	font-weight:bold;
-	font-family: Arial, Helvetica, Sans;
 	width:325px;
 	text-transform: uppercase;
 	/*line-height: 10px;*/
@@ -65,7 +65,6 @@ body
 	color: #FFF;
 	text-align: center;
 	font-size: 60px;
-	font-family: Arial, Helvetica, Sans;
 	font-weight: bold;
 	text-transform: uppercase;
 	/*letter-spacing: 1px;*/
@@ -77,7 +76,6 @@ body
 	color: #999;
 	text-align: center;
 	font-size: 46px;
-	font-family: Arial, Helvetica, Sans;
 	text-transform: uppercase;
 	/*letter-spacing: 1px;*/
 	margin-top:-10px;
@@ -89,7 +87,6 @@ body
 	color: #FF0;
 	text-align: center;
 	font-size: 10px;
-	font-family: Arial, Helvetica, Sans;
 	text-transform: uppercase;
 	letter-spacing: 9px;
 	margin-left: 9px;
@@ -100,7 +97,6 @@ body
 	color: #999;
 	text-align: center;
 	font-size: 10px;
-	font-family: Arial, Helvetica, Sans;
 	margin-top:5px;
 	letter-spacing:1px;
 	margin-left:1px;
@@ -142,7 +138,6 @@ body
 .subText
 {
 	color:#FF0;
-	font-family: Arial, Helvetica, Sans;
 	font-size:11px;
 	text-transform: uppercase;	
 }
@@ -162,7 +157,6 @@ body
 	margin-top:10px;
 	float:left;
 	color:#999;
-	font-family: Arial, Helvetica, Sans;
 	font-size:12px;
 	text-transform:lowercase;
 	text-align:left;
@@ -220,7 +214,6 @@ body
 {
 	width:450px;
 	color:#FF0;
-	font-family: Arial, Helvetica, Sans;
 	font-size:12px;
 	text-align:left;
 	font-weight:bold;
@@ -242,7 +235,6 @@ body
 {
 	background-color:#FF0;
 	color:#333;
-	font-family: Arial, Helvetica, Sans;
 	font-size:16px;
 	font-weight:bold;
 }
@@ -251,7 +243,6 @@ body
 {
 	margin-top:15px;
 	color:#999;
-	font-family: Arial, Helvetica, Sans;
 	font-size:10px;
 	text-align:left;
 }
@@ -275,7 +266,6 @@ body
 {
 	width:450px;
 	color:#FF0;
-	font-family: Arial, Helvetica, Sans;
 	font-size:12px;
 	text-align:left;
 	font-weight:bold;	
@@ -287,7 +277,7 @@ body
 	margin-bottom:10px;	
 }
 
-.navigationLeftCol
+#navigationLeftCol
 {
 	width:150px;
 	/*height:300px;*/
@@ -297,9 +287,15 @@ body
 	margin-top:-5px;
 }
 
-.navigationLeftCol a img
+#navigationLeftCol a img
 {
 	border-style:none;
+}
+
+.socialMediaIcon
+{
+	float:right;
+	margin: 10px 5px 5px 5px;
 }
 
 .contentRightCol
@@ -313,7 +309,6 @@ body
 .contentHeader
 {
 	color:#FFF;
-	font-family: Arial, Helvetica, Sans;
 	font-size:24px;
 	font-weight:normal;
 	margin-top:5px;
@@ -325,7 +320,6 @@ body
 .contentSubHeader
 {
 	color:#FFF;
-	font-family: Arial, Helvetica, Sans;
 	font-size:14px;
 	font-weight:bold;
 	text-transform:uppercase;
@@ -335,7 +329,6 @@ body
 .contentText
 {
 	color:#999;
-	font-family: Arial, Helvetica, Sans;
 	font-size:14px;
 }
 
@@ -356,46 +349,32 @@ body
 
 .contentNavigation
 {
-	font-size:18px;
+	font-size:14px;
 	margin-right:4px;
 	float:right;
+	width:140px;
 }
 
-.contentNavigation a:link
+.contentNavigation a
 {
-	color:#FF0;
-	font-family: Arial, Helvetica, Sans;
+	color:#333;
+	font-size:18px;
+	background-color:#FF0;
 	text-decoration: none;
 	float:right;
-	/*margin-left:5px;*/
-	/*width:100%;*/
-	width:140px;
-	display:block;
-}
-
-.contentNavigation a:visited
-{
-	color:#FF0;
-	font-family: Arial, Helvetica, Sans;
-	text-decoration: none;
-	float:right;
-	/*margin-left:5px;*/
-	/*width:100%;*/
-	width:140px;
-	display:block;
+	font-size:18px;
+	font-weight:bold;
 }
 
 .contentNavigation a:hover, .contentNavigation a:active
 {
 	color:#FFF;
-	font-family: Arial, Helvetica, Sans;
-	text-decoration: none;
+	background-color:#333;
+	/*text-decoration: none;
 	float:right;
-	/*width:100%;*/
-	width:140px;
-	display:block;
+	font-size:18px;
+	font-weight:bold;*/
 }
-
 /*
 You know BSG and lolcats have corrupted your mind when you're using ".cylonSearchTerm" and ".hoomanSearchTerm" for CSS class names...
 */
@@ -403,7 +382,6 @@ You know BSG and lolcats have corrupted your mind when you're using ".cylonSearc
 .cylonSearchTerm
 {
 	color:#FF0;
-	font-family: Arial, Helvetica, Sans;
 	font-size:16px;
 	text-transform: uppercase;
 }
@@ -411,7 +389,6 @@ You know BSG and lolcats have corrupted your mind when you're using ".cylonSearc
 .hoomanSearchTerm
 {
 	color:#FFF;
-	font-family: Arial, Helvetica, Sans;
 	font-size:16px;
 	text-transform: uppercase;
 }
@@ -435,7 +412,6 @@ You know BSG and lolcats have corrupted your mind when you're using ".cylonSearc
 	position:absolute;
 	top:0px;
 	left:0px;
-	font-family:Arial,Helvetica,Sans;
 	/*visibility:hidden;*/ /* debug */
 }
 
@@ -500,6 +476,52 @@ You know BSG and lolcats have corrupted your mind when you're using ".cylonSearc
 	color:#FFF;
 }
 
+#feedbackTab
+{
+	background-color:#333;
+	color:#FFF;
+	margin:0px;
+	float:left;
+	position:absolute;
+	top:250px;
+	left:0px;
+	width:80px;
+	height:65px;
+	font-size:10px;
+	text-align:center;
+	font-weight:bold;
+}
+
+#feedbackTab .icon
+{
+	margin: 10px 5px 5px 7px; /* left margin is an extra 2 pixels to accomodate the letter spacing on the right*/
+	font-size:30px;
+	letter-spacing:2px;
+}
+
+#feedbackTab:hover
+{
+	background-color:#4a4a4a;
+}
+
+#feedbackTab a:link
+{
+	text-decoration:none;
+	color:#FFF;
+}
+
+#feedbackTab a:visited
+{
+	text-decoration:none;
+	color:#FFF;
+}
+
+#feedbackTab a:hover, #feedbackTab a:active
+{
+	text-decoration:none;
+	color:#FFF;
+}
+
 .notifyOverlay
 {
 	background-image:url('fail_overlay_bg.png');
@@ -511,7 +533,6 @@ You know BSG and lolcats have corrupted your mind when you're using ".cylonSearc
 	position:absolute;
 	top:0px;
 	left:0px;
-	font-family:Arial,Helvetica,Sans;
 	/*visibility:hidden;*/ /* debug */
 }
 
