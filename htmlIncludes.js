@@ -31,7 +31,7 @@ function includeNavigation()
 		arrLinks['search'] = 'search.htm';
 	}
 	
-	// Concatenating string in JS is slower than turtles, but this is way too long for a single line, so...
+	// Concatenating string in JS is slower than turtles...
 	var arrNav = [linkPrefix, arrLinks['index'], '\"><img src=\"logo_small.png\" alt=\"Home\" /></a><br /><br />'
 		, '<div class=\"contentNavigation\">'
 		, linkPrefix, arrLinks['about'], '\">&nbsp; about &nbsp;</a><br /><br />'
@@ -43,9 +43,9 @@ function includeNavigation()
 		, linkPrefix, arrLinks['search'], '\">&nbsp; web search &nbsp;</a><br /><br />'
 		, '</div>'
 		, '<div>'
-		, '<a href=\"http://twitter.com/hayproj\"><img src=\"twitter.png\" class=\"socialMediaIcon\" /></a>'
-		, '<a href=\"http://www.facebook.com/pages/Haystack-Project/238404456195"><img src=\"facebook.png\" class=\"socialMediaIcon\" /></a>'
-		, '<a href=\"http://hayproj.tumblr.com\"><img src=\"tumblr.png\" class=\"socialMediaIcon\" /></a>'
+		, '<a href=\"https://twitter.com/hayproj\"><img src=\"twitter.png\" class=\"socialMediaIcon\" /></a>'
+		, '<a href=\"https://www.facebook.com/haystac\"><img src=\"facebook.png\" class=\"socialMediaIcon\" /></a>'
+		, '<a href=\"http://haystac.tumblr.com\"><img src=\"tumblr.png\" class=\"socialMediaIcon\" /></a>'
 		, '</div>'];
 	
 	document.getElementById('navigationLeftCol').innerHTML = arrNav.join('');
