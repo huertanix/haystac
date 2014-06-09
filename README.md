@@ -1,4 +1,7 @@
-Hayst.ac Web Search
+Hayst.ac (formerly Haystack Project)
+------------------------------------
+Release: Charles Freck (0.1)
+
 This application is licensed under the GNU Affero General Pubic Licence, Version 3.
 Please see http://www.gnu.org/licenses/agpl.html for details.
 
@@ -8,4 +11,4 @@ This is NOT the Haystack Network, which is the broken anti-censorship network fo
 
 We're different, and we want your help.  Take a look at our code help us throw a wrench at a machine of mass data retention.
 
-- David
+.dh
