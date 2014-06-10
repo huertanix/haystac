@@ -1,101 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <!--
-	haystack project
-	web search
-	webmaster david{at}haystackproject.com
-	http://www.haystackproject.com
-	
-	This application is licensed under the GNU General Pubic Licence, Version 3.
-	Please see http://www.gnu.org/licenses/gpl.html for details.
+  hayst.ac
+  obfuscated web search
+  https://www.hayst.ac
+
+  This application is licensed under the GNU Affero General Pubic Licence, Version 3.
+  Please see http://www.gnu.org/licenses/agpl.html for details.
 -->
 <head>
-	<title>Haystack Project - Web Search</title>
-	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-	<link rel="StyleSheet" href="main.css" title="Main" type="text/css" />
-	<script type="text/javascript" src="randomCore.js"></script>
-	<!--<script type="text/javascript" src="hayprojSearch.js"></script>-->
-	<script type="text/javascript" src="hayProj.js"></script>
-	<script type="text/javascript" src="scrapers/ghtScrape.js"></script>
-	<script type="text/javascript">
-		<!--
-		var userTerm;
-	
-		function displaySearchBurst(terms)
-		{
-			var htmlTerms = '<ol>';
-			
-			for (var x=0; x < terms.length; x++)
-			{ 
-				//if (terms[x] == document.getElementById('txtSearchBox').value.toLowerCase())
-				if (terms[x] == userTerm)
-				{
-					htmlTerms += '<li class=\'hoomanSearchTerm\'>';
-				}
-				else
-				{
-					htmlTerms += '<li class=\'cylonSearchTerm\'>';
-				}
-				
-				htmlTerms += terms[x] + '</li>';
-			}
-			
-			htmlTerms += '</ol>';
-			
-			document.getElementById('pnlTerms').innerHTML = htmlTerms;
-		}
-		// -->
-	</script>
-	
+  <title>Hayst.ac</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  <link rel="stylesheet" href="css/main.css" type="text/css" />
+  <script type="text/javascript" src="js/sjcl.js"></script>
+  <script type="text/javascript" src="js/haystac.js"></script>
 </head>
 <body>
-
-<div class="pageMantle">
-	<div class="pageCore">
-		<div class="navigationLeftCol">
-			<a href="index.htm">
-				<img src="logo_small.png" alt="Home" />
-			</a>
-			<div class="contentNavigation">
-				<a href="about.htm">about</a>
-				<a href="downloads.htm">download</a>
-				<a href="developers.htm">developers</a>
-				<a href="support.htm">support</a>
-				<a href="contact.htm">contact</a>
-				<a href="search.htm">web search</a>
-			</div>
-		</div>
-		<div class="searchBoxContainer">
-			<h1 class="contentHeader">
-				Web Search
-			</h1>
-			<div class="searchNote">
-				*** NOTE: Please whitelist haystackproject.org and haystackproject.com in your pop-up blocking software or else everything will be thrown out of whack and the CIA will storm your house, kick your dog, and melt your otter pops. ***
-			</div>
-			<input type="text" id="txtSearchBox" class="searchBox" onkeydown="JavaScript: if (event.keyCode == 13) { webSearch(true); }" />
-		</div>
-		<div class="searchControls">
-			<input type="checkbox" id="chkReorderPhrase" class="searchOption" />Randomize Word Order in Search Phrase
-			&nbsp;
-			<input type="checkbox" id="chkIncludeTypos" class="searchOption" disabled="disabled" />Include Typos
-		</div>
-		<div class="searchButtonContainer">
-			<input type="button" id="btnSearch" value="search" class="searchButton" onclick="webSearch(true);" />
-		</div>
-		
-		<div id="pnlTermsContainer" class="searchTermsContainer">
-			<div class="searchTip">
-				For best results, keep this page open to allow it to generate its own searches.
-			</div>
-			<div id="pnlTerms"></div>
-			<div class="searchDisclaimer">
-				<b>DISCLAIMER</b>: This service utilizes server-side code to retrieve content to generate keywords with.  As per GPL requirements, the source code for this is available in the GIT repository.  However, it is ran on our (shared) server and thus you have no real way of knowing if it's been backdoor'd.  We can't guarantee your privacy, not that we ever did; We don't have the lawyers for that.
-			</div>
-		</div>
-		<div id="pnlFrameContainer">
-		</div>
-	</div>
-</div>
-
+  <h1>Hayst.ac</h1>
+  <p>Scramble suit up, yo.</p>
 </body>
 </html>
