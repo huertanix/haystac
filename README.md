@@ -15,7 +15,7 @@ returning to Tempe eager to tackle a problem the forgotten co-founder of Tesla M
 
 With a sudden abundance of free time, Huerta spends it all on "Haystack Project" and all his severance pay on coffee,
 which his trip in the Northwest gave him an appreciation for.  Many liters of coffee consumed and lines of code 
-written and re-written later, Huerta find a way to add fake searches into his search history.
+written and re-written later, Huerta finds a way to add fake searches into his search history.
 
 Returning to the northwest, Huerta presents this finding at Toorcamp, where hackers are fascinated by the idea of
 search history obfuscation, although none manifest the interest in the form of code contributions. After a 
