@@ -1,8 +1,8 @@
 chrome.app.runtime.onLaunched.addListener(function() {
   var screenWidth = screen.availWidth;
   var screenHeight = screen.availHeight;
-  var width = 500;
-  var height = 300;
+  var width = 800;
+  var height = 600;
   chrome.app.window.create('../search.htm', {
     'bounds': {
       'width': width,
