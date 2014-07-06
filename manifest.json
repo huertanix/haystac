@@ -5,8 +5,8 @@
   "manifest_version": 2,
   "app": {
     "background": {
-      "scripts": ["background.js"]
+      "scripts": ["js/background.js"]
     }
   },
-  "icons": { "16": "calculator-16.png", "128": "calculator-128.png" }
+  "icons": { "16": "img/haystac-logo-16px.png", "128": "img/haystac-logo-128px.png" }
 }

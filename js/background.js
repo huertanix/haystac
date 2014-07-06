@@ -3,7 +3,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
   var screenHeight = screen.availHeight;
   var width = 500;
   var height = 300;
-  chrome.app.window.create('search.htm', {
+  chrome.app.window.create('../search.htm', {
     'bounds': {
       'width': width,
       'height': height,
