@@ -13,10 +13,39 @@
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <link rel="stylesheet" href="css/main.css" type="text/css" />
   <script type="text/javascript" src="js/sjcl.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/haystac.js"></script>
 </head>
 <body>
   <h1>Hayst.ac</h1>
   <p>Scramble suit up, yo.</p>
+  <input type="text" id="searchTerm" />
+  <select id="searchEngine">
+    <option value="a">Ask</option>
+    <option value="bk">Blekko</option>
+    <option value="dg" selected="selected">DuckDuckGo</option>
+    <option value="g">Google</option>
+    <option value="sp">StartPage</option>
+    <option value="yh">Yahoo</option>
+  </select>
+  <input type="button" id="searchSubmit" value="search" />
+  <div class="searchControls">
+    <input type="checkbox" id="reorderPhrase" class="searchOption" />Randomize Word Order in Search Phrase
+    <!--<input type="checkbox" id="chkIncludeTypos" class="searchOption" disabled="disabled" />Include Typos-->
+  </div>
+  <div id="searchTerms">
+    <!-- This will auto-randomly generate artificial stacks in the near future... -->
+    <p id="searchTip" style="display:none;">
+      <!-- Maybe there's a way it can do this in the background?-->
+      For best results, keep this app open to allow it to generate its own searches.
+    </p>
+    <p id="disclaimer">
+      <b>DISCLAIMER</b>: This search obfuscation system is very experimental and interfaces with search engines we have no 
+      control over. As per AGPL requirements, the source code for Hayst.ac Web Search is available in our <a 
+      href="https://github.com/huertanix/haystac">GIT repository</a> so you can see just how experimental it is.Please 
+      read our <a href="privacy.htm">privacy policy</a>.
+    </p>
+    <footer>Made with ✊ in PHX + NYC. Visit <a href="http://www.hayst.ac">hayst.ac</a> to learn more about how this app works and why it exists.</footer>
+  </div>
 </body>
 </html>
