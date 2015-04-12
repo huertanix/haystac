@@ -11,12 +11,11 @@ var haystac = {
     return ranNum;
   },
   // randomized sorting method for array.sort()
-  shuffle: function () {
+  shuffle: function () { // Formerly "randomness"
     var ranNum = parseInt(randomNumberBetween(1,9));
-    // Get 1 or 0, whether temp is odd or even
     var oddOrEven = ranNum % 2;
-    // Get +1 or -1, depending on whether its > 5 or < 5
     var posOrNeg = ranNum > 5 ? 1 : -1;
+    
     // Return -1, 0, or +1
     return( oddOrEven * posOrNeg );
   },
@@ -63,7 +62,117 @@ var haystac = {
     
     return ranDate;
   },
-  
+  normalizeSearchTerm: function (searchTerm) { // formerly "sanitizeSearchPhrase"
+    var searchTermWords = searchTerm.split(' ');
+    var normalizedSearchTerm = '';
+
+    for (var x=0; x < searchTermWords.length; x++) {
+      if (x === (searchTermWords.length -1)) {
+        normalizedSearchTerm += searchTermWords[x].toLowerCase();
+      }
+      else {
+        normalizedTermPhrase += searchTermWords[x].toLowerCase() + '+';
+      }
+    }
+
+    return normalizedTermPhrase;
+  }, 
+  displaySearchBurst: function (terms) {
+    document.getElementById('pnlTerms').innerHTML = '';
+    var termList = document.createElement('ol');
+
+    for (var x=0; x < terms.length; x++) { 
+      var termItem = document.createElement('li');
+
+      if (terms[x] === userTerm) {
+        termItem.className = 'hoomanSearchTerm';
+      }
+      else {
+        termItem.className = 'cylonSearchTerm';
+      }
+
+      termItem.innerHTML = terms[x];
+      termList.appendChild(termItem);
+    }
+
+    document.getElementById('pnlTerms').appendChild(termList);
+  },
+  // ~*JUST GOOGLE THINGS*~ BELOW
+  // This function does what rwt() does in Google's search results page
+  gUrl: function (realUrl,oi,cad,ct,cd,usg,sig2,ved,ei) {
+    var trackingUrl = ['http://www.google.com/url?sa=t','\x26source\x3dweb'
+      ,oi?'&oi='+encodeURIComponent(oi) : ''
+      ,cad?'&cad='+encodeURIComponent(cad) : ''
+      ,'&ct=',encodeURIComponent(ct||'res')
+      ,'&cd=',encodeURIComponent(cd)
+      ,'&ved=',encodeURIComponent(ved)
+      ,'&url=',encodeURIComponent(realUrl).replace(/\+/g,'%2B')
+      ,'&ei=',ei
+      ,usg?'&usg=' + usg : '', sig2].join('');
+
+    return trackingUrl;
+  },
+  gResultLinks: function (resultsPageSource) {
+    // TODO: adjust regex to look for clk (not logged in) results or if clk's parms are too diff, write a whole seperate thing for it...
+    var arrResultLinkAttribs = resultsPageSource.match(/<[^>]*rn rwt[^>]*>/g);
+    var arrRealLinks = new Array();
+    // grab ei var from window.google defintion: ,ei:"desu"
+    var eiValMatches = resultsPageSource.match(/ei:\"[^\"]*\"/g);
+    var eiVal = eiValMatches[0].substring(4,eiValMatches[0].length-1);
+
+    for (var x=0; x<arrResultLinkAttribs.length; x++) {
+      var realUrl = arrResultLinkAttribs[x].match(/ref=\"[^\"]*\"/g)[0]; // this will failwhale is no match is found... 
+      // remove leading ref=" and trailing "
+      var realRealUrl = realUrl.substring(5,realUrl.length-1);
+
+      arrRealLinks.push(realRealUrl);
+    }
+      // TODO: Also need an array for google.com href's that don't use rwt, like links to youtube clips, blogger, etc...
+    // yo dawg, we heard you liek arrays...
+    var arrLinkParms = new Array();
+
+    for (var x=0; x<arrResultLinkAttribs.length; x++) {
+      var firstParen = arrResultLinkAttribs[x].indexOf('(');
+      var lastParen = arrResultLinkAttribs[x].lastIndexOf(')');
+      var arrParms = arrResultLinkAttribs[x].substring(firstParen + 1, lastParen).split(',');
+      arrLinkParms.push(arrParms);
+    }
+
+    var clickThruUrls = new Array();
+
+    // go through the array of rwt parameter arrays and replace the 'this' parm with the real link and add ei
+    for (var x=0; x<arrLinkParms.length; x++) {
+      arrLinkParms[x][0]=arrRealLinks[x]; // this will epically failwhale if the two regexes aren't getting the same link infoz
+      arrLinkParms[x].push(eiVal);
+      // also remove leading and trailing single quotes in the parms extracted from the rwt call...
+      var clickThruUrl = gUrl(arrLinkParms[x][0]
+        ,arrLinkParms[x][1].substring(1,arrLinkParms[x][1].length-1)
+        ,arrLinkParms[x][2].substring(1,arrLinkParms[x][2].length-1)
+        ,arrLinkParms[x][3].substring(1,arrLinkParms[x][3].length-1)
+        ,arrLinkParms[x][4].substring(1,arrLinkParms[x][4].length-1)
+        ,arrLinkParms[x][5].substring(1,arrLinkParms[x][5].length-1)
+        ,'&' + arrLinkParms[x][6].substring(6,arrLinkParms[x][6].length-1) // sig2 has an & that gets encoded when rendered on the page, so we're removing "'&amp;" ... and decodeURIComponent() is being teh dumbz
+        ,arrLinkParms[x][7].substring(1,arrLinkParms[x][7].length-1)
+        ,arrLinkParms[x][8]);
+
+      clickThruUrls.push(clickThruUrl);
+    }
+
+    return clickThruUrls;
+  }
+  ghtSearchTerms: function(ghtSource, termTotal) {
+    var arrRawTerms = ghtSource.match(/class=num>\d{1,3}\.{1}.*a/g);
+    arrRawTerms.sort(shuffle);
+    var arrProcessedTerms = new Array(termTotal);
+
+    for (var x=0; x < termTotal; x++) {
+      var keyWord;
+      keyWord = arrRawTerms[x].substring(arrRawTerms[x].lastIndexOf('>') + 1, arrRawTerms[x].lastIndexOf('<'));
+      arrProcessedTerms[x] = keyWord;
+    }
+
+    return arrProcessedTerms;
+  }
 };
 
 document.addEventListener('DOMContentLoaded', function () {
