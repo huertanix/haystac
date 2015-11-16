@@ -1,4 +1,8 @@
+"use strict";
+
 var haystac = {
+  currentSearchTerms: [],
+  currentClickThroughRealURLs: [],
   // Random number in range (inclusive)
   randomNumberBetween: function (minNumber, maxNumber) {
     var buf = new Uint8Array(1);
@@ -76,7 +80,7 @@ var haystac = {
     }
 
     return normalizedTermPhrase;
-  }, 
+  },
   displaySearchBurst: function (terms) {
     document.getElementById('pnlTerms').innerHTML = '';
     var termList = document.createElement('ol');
@@ -96,6 +100,45 @@ var haystac = {
     }
 
     document.getElementById('pnlTerms').appendChild(termList);
+  },
+  setTerms: function(termSauce) {
+    // Reset previous terms and clickthroughs...
+    this.currentSearchTerms = [];
+    this.currentClickThroughURLs = [];
+
+    if (termSauce) {
+      // TODO: display overlay with cows and chickens moving hay around
+      // brb generating terms
+      var fakeTerms = ghtSearchTerms(termSauce.responseText, randomNumberBetwixt(5, 20));
+
+      for (var z=0; z < fakeTerms.length; z++) {
+        this.currentSearchTerms.push(fakeTerms[z]);
+      }
+    }
+
+    if (currentSourceIndex < 2) {
+      var ghtDate = randomDate(ghtMinDate, new Date());
+      var ghtUrl = 'http://www.google.com/trends/hottrends?date=' + ghtDate.getFullYear() + '-' + ghtDate.getMonth() + '-' + ghtDate.getDate();
+
+      GM_xmlhttpRequest({ // REPLACE WIF CHROOOOME
+            method: 'GET'
+            ,url: ghtUrl
+            ,headers: {'User-Agent': navigator.userAgent}
+            ,onload:setTerms // my heard hurts
+      });
+
+      currentSourceIndex++;
+    }
+    else {
+      // cows and chikins back in the barn nao
+      try {
+        // This is a direct reference to webSearch in memory rather than in the DOM;
+        this.setTimeout(this.webSearch, randomNumberBetween(60000, 300000)); // 1 minute to 5 minutes
+      }
+      catch(exception) {
+        console.log('[automated] webSearch FAIL: ' + exception.message);
+      }
+    }
   },
   // ~*JUST GOOGLE THINGS*~ BELOW
   // This function does what rwt() does in Google's search results page
@@ -127,7 +170,7 @@ var haystac = {
 
       arrRealLinks.push(realRealUrl);
     }
-      // TODO: Also need an array for google.com href's that don't use rwt, like links to youtube clips, blogger, etc...
+    // TODO: Also need an array for google.com href's that don't use rwt, like links to youtube clips, blogger, etc...
     // yo dawg, we heard you liek arrays...
     var arrLinkParms = new Array();
 
@@ -159,7 +202,7 @@ var haystac = {
     }
 
     return clickThruUrls;
-  }
+  },
   ghtSearchTerms: function(ghtSource, termTotal) {
     var arrRawTerms = ghtSource.match(/class=num>\d{1,3}\.{1}.*a/g);
     arrRawTerms.sort(shuffle);
